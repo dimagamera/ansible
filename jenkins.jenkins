@@ -27,5 +27,13 @@ pipeline  {
                 }
             }
         }
+        stage("docker push"){
+            steps{
+                echo "========Docker push============"
+                dir('.'){
+                sh "docker push dimagamera/test:latest"
+              }
+           }
+        }
     }
 }
