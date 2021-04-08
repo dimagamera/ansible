@@ -13,7 +13,7 @@ pipeline  {
             steps {
                 echo 'Creating docker image ...'
                 dir('.'){
-                    sh "sudo docker build -t dimagamera/test . "
+                    sh "docker build -t dimagamera/test . "
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline  {
                 echo " ============== docker login =================="
                 withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh '''
-                    sudo docker login -u $USERNAME -p $PASSWORD
+                    docker login -u $USERNAME -p $PASSWORD
                     '''
                 }
             }
